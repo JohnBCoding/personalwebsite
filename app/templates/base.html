@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title> {{ title }} - John</title>
+	</head>
+	<body>
+		<h1> JOHN BULLARD </h1>
+		<div id = "topNav">
+			<a href="{{ url_for('home') }}">Home</a> |
+			<a href="{{ url_for('about') }}">About Me</a> |
+			<a href="{{ url_for('projects') }}">Projects</a> |
+			{% if g.user.is_authenticated %}
+				<a href="{{ url_for('post') }}">New Post</a> |
+				<a name = "admin" href="{{ url_for('logout') }}">Logout</a>
+			{% else %}
+				<a name = "admin" href="{{ url_for('admin') }}">Login</a>
+			{% endif %}
+		</div>
+		<hr>
+		
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+				{% for message in messages %}
+					<li>{{ message }} </li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+		
+		{% block content %}{% endblock %}
+	</body>
+</html>

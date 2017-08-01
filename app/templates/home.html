@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Hello, John.</h1>
+
+    {% for post in posts.items %}
+        {% include 'post.html' %}
+    {% endfor %}
+
+    {% if posts.has_prev %}
+        <a href="{{ url_for('home', page=posts.prev_num) }}">&lt;&lt; Newer Posts</a>
+    {% endif %}
+    {% if posts.has_next %}
+        <a href="{{ url_for('home', page=posts.next_num) }}">Older Posts &gt;&gt;</a>
+    {% endif %}
+
+{% endblock %}
