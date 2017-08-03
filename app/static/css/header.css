@@ -1,0 +1,72 @@
+#topHeader {
+    position: absolute;
+    color: gray;
+    top: -0.5px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: gray;
+}
+
+.dropdown {
+    display: none;
+}
+
+/* Collapse nav bar when screen is too small. */
+@media screen and (max-width: 600px) {
+
+    #topHeader {
+        top: -11px;
+    }
+
+    .regNav {
+        display: none;
+    }
+
+    .dropdown {
+        display: block;
+        text-align: center;
+    }
+
+    .collapse {
+        display: none;
+    }
+
+    .collapse li {
+        float: none;
+        display: block;
+        z-index: 1;
+    }
+
+    #dropdownBtn {
+        float: right;
+    }
+
+    #dropdownBtn:hover {
+        background-color: gray;
+    }
+
+    #dropdownBtn:active .collapse {
+        display: block;
+    }
+}
