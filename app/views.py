@@ -13,8 +13,9 @@ from config import POSTS_PAGE
 def home(page=1):
 
     posts = Post.query.paginate(page, POSTS_PAGE, False)
-
-    return render_template("home.html", title="Home", posts=posts)
+    page_css = url_for('static', filename='css/post.css')
+    return render_template("home.html", title="Home", posts=posts,
+                           page_css=page_css)
 
 
 @app.route("/about")
@@ -93,6 +94,30 @@ def delete(post_id=0):
     db.session.commit()
 
     return redirect(url_for("home"))
+
+@app.route("/edit/<int:post_id>", methods=["GET", "POST"])
+@login_required
+def edit(post_id=0):
+
+    form = NewPost()
+    old_post = Post.query.filter_by(id=post_id).first()
+
+    if form.validate_on_submit():
+
+        old_post.title = form.title.data
+        old_post.body = form.body.data
+        old_post.timestamp = datetime.utcnow()
+        old_post.author = g.user
+        db.session.commit()
+
+        return redirect(url_for("home"))
+
+    else:
+
+        form.title.data = old_post.title
+        form.body.data = old_post.body
+
+    return render_template("new_post.html", title="Edit Post", form=form)
 
 
 @app.route("/logout")
