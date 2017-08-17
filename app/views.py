@@ -12,7 +12,8 @@ from config import POSTS_PAGE
 @app.route("/home/<int:page>", methods=["GET"])
 def home(page=1):
 
-    posts = Post.query.paginate(page, POSTS_PAGE, False)
+    # Paginate posts by newest post time.
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, POSTS_PAGE, False)
     page_css = url_for('static', filename='css/post.css')
     return render_template("home.html", title="Home", posts=posts,
                            page_css=page_css)
@@ -81,7 +82,10 @@ def post():
 
         return redirect(url_for("home"))
 
-    return render_template("new_post.html", title="New Post", form=form)
+    page_css = url_for("static", filename="css/new_post.css")
+    extra_script = url_for("static", filename="js/newPost.js")
+    return render_template("new_post.html", title="New Post", form=form, page_css=page_css,
+                           extra_script=extra_script)
 
 
 @app.route("/delete/<int:post_id>", methods=["GET"])

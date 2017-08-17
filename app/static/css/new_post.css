@@ -1,0 +1,44 @@
+textarea {
+    display: none;
+}
+
+.text-buttons {
+    position: relative;
+    left: 25%;
+    display: inline;
+}
+
+.active {
+    background-color: gray;
+}
+
+#title {
+    position: relative;
+    left: 25%;
+}
+
+#boldBtn {
+    font-weight: bold;
+}
+
+#italicsBtn {
+    font-style: italic;
+}
+
+#underlineBtn {
+    text-decoration: underline;
+}
+
+#text-area {
+    position: relative;
+    left: 25%;
+    height: 50%;
+    width: 50%;
+    border: 1px solid gray;
+    outline: none;
+}
+
+#postBtn {
+    position: relative;
+    left: 25%;
+}

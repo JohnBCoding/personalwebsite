@@ -28,7 +28,11 @@ li a:hover {
     background-color: gray;
 }
 
-.dropdown {
+.dropdown{
+    display: none;
+}
+
+#collapse {
     display: none;
 }
 
@@ -48,13 +52,10 @@ li a:hover {
         text-align: center;
     }
 
-    .collapse {
-        display: none;
-    }
-
-    .collapse li {
+    .collapse-content li {
         float: none;
         display: block;
+        padding-top: 5px;
         z-index: 1;
     }
 
@@ -64,9 +65,5 @@ li a:hover {
 
     #dropdownBtn:hover {
         background-color: gray;
-    }
-
-    #dropdownBtn:active .collapse {
-        display: block;
     }
 }

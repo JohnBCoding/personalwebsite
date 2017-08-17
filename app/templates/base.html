@@ -3,6 +3,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="{{ url_for('static', filename='css/header.css') }}" rel="stylesheet">
 		<link href="{{ page_css }}" rel="stylesheet">
+		<script src="{{ url_for('static', filename='js/stickyDropdown.js') }}" type="text/javascript"></script>
+		{% if extra_script %}
+			<script src="{{ extra_script }}" type="text/javascript"></script>
+		{% endif %}
 		<title> {{ title }} - John</title>
 	</head>
 	<body>
@@ -25,7 +29,7 @@
 				<ul>
 					<li id="dropdownBtn">&#9776;
 						<ul>
-							<div class="collapse">
+							<div id="collapse" class="collapse-content">
 								<li><a href="{{ url_for('home') }}">Home</a>
 								<li><a href="{{ url_for('about') }}">About Me</a></li>
 								<li><a href="{{ url_for('projects') }}">Projects</a></li>
